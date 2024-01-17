@@ -53,6 +53,13 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         protected Void doInBackground(Void... params) {
+            // Simulate a time delay (in milliseconds) during saving
+            try {
+                Thread.sleep(2000); // 2 seconds delay
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
             String data = inputData.getText().toString();
             try (FileOutputStream fos = openFileOutput("saved_data.txt", MODE_PRIVATE)) {
                 fos.write(data.getBytes());
@@ -77,6 +84,13 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         protected String doInBackground(Void... params) {
+            // Simulate a time delay (in milliseconds) during loading
+            try {
+                Thread.sleep(2000); // 2 seconds delay
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
             try (FileInputStream fis = openFileInput("saved_data.txt")) {
                 int size = fis.available();
                 byte[] buffer = new byte[size];
